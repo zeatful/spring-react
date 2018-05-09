@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  # build the spring boot container, depending on the database
+  app:
+    image: zeatful/spring-react:0.0.1-SNAPSHOT
+    links:
+      - db
+    ports:
+      - 8080:8080
+
+  # create a mongo database container
+  db:
+    image: mongo
+    restart: always
