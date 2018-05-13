@@ -1,8 +1,7 @@
-/target/
+/target/*
 !/target/
-/target/tmp/
+/target/tmp/*
 !/target/tmp/
-/target/tmp/src
 !/target/tmp/src/
 
 !.mvn/wrapper/maven-wrapper.jar
