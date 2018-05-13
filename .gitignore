@@ -1,6 +1,7 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
-!/target/tmp/src
+!/target/tmp/src/
+
 ### STS ###
 .apt_generated
 .classpath
