@@ -13,6 +13,9 @@ This project is configured to leverage docker to easily standup the application 
 ### Start up the application
 ```./mvnw spring-boot:run```
 
+### Start the webpack server for quicker feedback
+```webpack-dev-server```
+
 ### Optional package the application into a docker image
 ```./mvnw package -DskipTest```
 
