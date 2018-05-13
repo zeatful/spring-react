@@ -16,8 +16,9 @@ This project is configured to leverage docker to easily standup the application 
 ### Start the webpack server for quicker feedback
 ```webpack-dev-server```
 
-### Optional package the application into a docker image
+### Alternative Options:
+#### Package the application into a docker image
 ```./mvnw package -DskipTest```
 
-### Optional run the application and mongo using docker compose
+#### Run the application and mongo using docker compose
 ```docker-compose up```
