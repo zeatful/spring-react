@@ -14,15 +14,15 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 @SpringBootApplication
 public class SpringReactApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringReactApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringReactApplication.class, args);
+    }
 
-	@Bean
-	public RouterFunction<ServerResponse> routes(){
-		return RouterFunctions.route(
-				GET("/"),
-				request -> ServerResponse.ok().body(BodyInserters.fromResource(new ClassPathResource("public/index.html")))
-		);
-	}
+    @Bean
+    public RouterFunction<ServerResponse> routes() {
+        return RouterFunctions.route(
+                GET("/"),
+                request -> ServerResponse.ok().body(BodyInserters.fromResource(new ClassPathResource("public/index.html")))
+        );
+    }
 }
