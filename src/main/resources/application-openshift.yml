@@ -1,0 +1,11 @@
+# grab mongodb environment variables in openshift
+spring:
+  profiles:
+    active: openshift
+  data:
+    mongodb:
+      host: mongodb
+      port: 27017
+      database: ${MONGODB_DATABASE}
+      username: ${MONGODB_USER}
+      password: ${MONGODB_PASSWORD}
