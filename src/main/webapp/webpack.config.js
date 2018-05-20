@@ -1,17 +1,19 @@
-'use strict';
-let packageJSON = require('./package.json');
-let path = require('path');
+const path = require('path');
+const merge = require('webpack-merge');
 
-// build path where we will place the bundle.js
+const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
-    build: path.join(__dirname, 'target', 'classes', 'META-INF', 'resources', 'webjars', packageJSON.name, packageJSON.version)
+    source: path.join(__dirname, 'app'),
+    output: path.join(__dirname, '../../../target/classes/static')
 };
 
-module.exports = {
-    entry: ['./src/index.js'],
+const common = {
+    entry: [
+        PATHS.source
+    ],
     output: {
-        path: PATHS.build, // places the bundle.js in the jar
-        publicPath: '/',
+        path: PATHS.output,
+        publicPath: '',
         filename: 'bundle.js'
     },
     module: {
@@ -28,13 +30,26 @@ module.exports = {
     resolve: {
         extensions: ['', '.js', '.jsx']
     },
-    devServer: {
-        port: 8090,
-        historyApiFallback: true,
-        contentBase: './',
-        watchOptions: {
-            aggregateTimeout: 300,
-            poll: 1000
-        }
-    }
 };
+
+if (TARGET === 'start' || !TARGET) {
+    module.exports = merge(common, {
+        devServer: {
+            port: 9090,
+            proxy: {
+                '/': {
+                    target: 'http://localhost:8080',
+                    secure: false,
+                    prependPath: false
+                }
+            },
+            publicPath: 'http://localhost:9090/',
+            historyApiFallback: true
+        },
+        devtool: 'source-map'
+    });
+}
+
+if (TARGET === 'build') {
+    module.exports = merge(common, {});
+}
