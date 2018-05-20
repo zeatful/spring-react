@@ -23,7 +23,7 @@ public class SpringReactApplication {
     public RouterFunction<ServerResponse> routes() {
         return RouterFunctions.route(
                 GET("/"),
-                request -> ServerResponse.ok().body(BodyInserters.fromResource(new ClassPathResource("public/index.html")))
+                request -> ServerResponse.ok().body(BodyInserters.fromResource(new ClassPathResource("static/index.html")))
         );
     }
 }
