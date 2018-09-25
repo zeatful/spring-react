@@ -1,29 +1,26 @@
 package com.zeatful.springreact;
 
+import com.mongodb.reactivestreams.client.MongoClient;
+import com.mongodb.reactivestreams.client.MongoClients;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.util.StringUtils;
-import org.springframework.web.reactive.function.BodyInserters;
-import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.RouterFunctions;
-import org.springframework.web.reactive.function.server.ServerResponse;
-
-import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+import org.springframework.data.mongodb.config.AbstractReactiveMongoConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 
 @SpringBootApplication
-public class SpringReactApplication {
+@EnableReactiveMongoRepositories
+public class SpringReactApplication extends AbstractReactiveMongoConfiguration {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringReactApplication.class, args);
     }
 
-    @Bean
-    public RouterFunction<ServerResponse> routes() {
-        return RouterFunctions.route(
-                GET("/"),
-                request -> ServerResponse.ok().body(BodyInserters.fromResource(new ClassPathResource("static/index.html")))
-        );
+    public MongoClient reactiveMongoClient() {
+        return MongoClients.create();
+    }
+
+    @Override
+    protected String getDatabaseName() {
+        return "reactive";
     }
 }

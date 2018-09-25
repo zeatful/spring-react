@@ -28,12 +28,20 @@
     "webpack-merge": "^0.8.4"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "babel-preset-stage-1": "^6.1.18",
+    "bootstrap": "^4.1.1",
+    "css-loader": "^0.28.11",
+    "express": "^4.16.2",
     "lodash": "^3.10.1",
-    "react": "16.3.2",
-    "react-dom": "16.3.2",
-    "react-redux": "5.0.7",
+    "react": "^0.14.9",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^0.14.9",
+    "react-redux": "4.3.0",
     "react-router": "^2.0.1",
-    "redux": "4.0.0"
+    "react-sparklines": "^1.6.0",
+    "redux": "^3.0.4",
+    "redux-promise": "^0.5.3",
+    "style-loader": "^0.21.0"
   }
 }
