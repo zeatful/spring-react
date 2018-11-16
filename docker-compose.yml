@@ -3,6 +3,7 @@ version: '3'
 services:
   # build the spring boot container, depending on the database
   app:
+    build: .
     image: zeatful/spring-react:0.0.1-SNAPSHOT
     links:
       - db
